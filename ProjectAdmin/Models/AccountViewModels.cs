@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjectAdmin.Models
@@ -64,6 +65,10 @@ namespace ProjectAdmin.Models
 
     public class RegisterViewModel
     {
+        public string PrimeiroNome { get; set; }
+        public string UltimoNome { get; set; }
+        public string Genero { get; set; }
+        public DateTime dataNascimento { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

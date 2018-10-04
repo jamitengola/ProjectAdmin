@@ -124,14 +124,15 @@ Description: "HTML-template"
 /*------------- #VARIABLES --------------*/
 /*------------- #HEADER --------------*/
 .header {
-  height: 70px;
-  background-color: #3f4257;
-  padding-right: 70px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 21; }
+    height: 70px;
+    background-color: #2f3457;
+    padding-right: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 21;
+}
   .header .page-title {
     padding: 26px 50px 26px 100px;
     text-transform: uppercase;
@@ -3876,10 +3877,11 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
   z-index: 22;
   width: 70px;
   min-height: 1000vh; }
-  .fixed-sidebar .logo {
-    height: 70px;
-    background-color: #ff5e3a;
-    padding: 15px; }
+    .fixed-sidebar .logo {
+        height: 70px;
+        background-color: #8d9dd7;
+        padding: 15px;
+    }
   .fixed-sidebar .ui-block-title {
     margin: 15px 0; }
     .fixed-sidebar .ui-block-title:first-child {

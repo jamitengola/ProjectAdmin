@@ -1,0 +1,297 @@
+﻿
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Feed";
+    var imgUrl = Url.Content("~/Imagens/" + User.Identity.GetUserName() + ".png");
+}
+
+<div class="container">
+    <div class="row">
+
+        <!-- Main Content -->
+
+        <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+
+            <div class="ui-block">
+
+                <!-- News Feed Form  -->
+
+                <div class="news-feed-form">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active inline-items" data-toggle="tab" href="#home-1" role="tab" aria-expanded="true">
+
+                                <svg class="olymp-status-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-status-icon"></use></svg>
+
+                                <span>Estado</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link inline-items" data-toggle="tab" href="#profile-1" role="tab" aria-expanded="false">
+
+                                <svg class="olymp-multimedia-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-multimedia-icon"></use></svg>
+
+                                <span>Multimedia</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+                            <form>
+                                <div class="author-thumb">
+                                    <img style="width:30px;height:30px" src="@imgUrl" alt="author">
+                                </div>
+                                <div class="form-group with-icon label-floating is-empty">
+                                    <label class="control-label">Escreva Qualquer Coisa Aqui...</label>
+                                    <textarea class="form-control" placeholder=""></textarea>
+                                </div>
+                                <div class="add-options-message">
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="ADD PHOTOS">
+                                        <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                    </a>
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="TAG YOUR FRIENDS">
+                                        <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                                    </a>
+
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="ADD LOCATION">
+                                        <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
+                                    </a>
+
+                                    <button class="btn btn-primary btn-md-2">Publicar</button>
+                                    <button class="btn btn-md-2 btn-border-think btn-transparent c-grey">Previsualizar</button>
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
+                            <form>
+                                <div class="author-thumb">
+                                    <img style="width:30px;height:30px" src="@imgUrl" alt="author">
+                                </div>
+                                <div class="form-group with-icon label-floating is-empty">
+                                    <label class="control-label">Escreva Qualquer Coisa Aqui...</label>
+                                    <textarea class="form-control" placeholder=""></textarea>
+                                </div>
+                                <div class="add-options-message">
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="ADD PHOTOS">
+                                        <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
+                                    </a>
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="TAG YOUR FRIENDS">
+                                        <svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
+                                    </a>
+
+                                    <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="ADD LOCATION">
+                                        <svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
+                                    </a>
+
+                                    <button class="btn btn-primary btn-md-2">Publicar</button>
+                                    <button class="btn btn-md-2 btn-border-think btn-transparent c-grey">Previsualizar</button>
+
+                                </div>
+
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- ... end News Feed Form  -->
+            </div>
+
+
+
+            <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+
+        </main>
+
+        <!-- ... end Main Content -->
+        <!-- Left Sidebar -->
+
+        <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-12 col-12">
+            <div id="dropZone" class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Sugestões de Amizade</h6>
+                    <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                </div>
+                <div style="text-align:center">
+                    <span style="margin-top:10%" class="olymp-close-icon" data-toggle="tooltip" data-placement="top" data-original-title="Sem Sugestões">
+                        <a href="#">
+                            <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                        </a>
+                    </span>
+                    <h4>Sem Sugestões</h4>
+                </div>
+                <!-- ... end W-Action -->
+            </div>
+
+
+
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Paginas Favoritas</h6>
+                </div>
+
+                <!-- W-Friend-Pages-Added -->
+
+                <ul class="widget w-friend-pages-added notification-list friend-requests">
+                    <li class="inline-items">
+                        <div class="author-thumb">
+                            <img src="~/img/avatar41-sm.jpg" alt="author">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">Tec On</a>
+                            <span class="chat-message-item">Restaurant / Bar</span>
+                        </div>
+                        <span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="Adicionar às minhas páginas">
+                            <a href="#">
+                                <svg class="olymp-star-icon"><use xlink:href="~/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+                            </a>
+                        </span>
+
+                    </li>
+
+                    <li class="inline-items">
+                        <div class="author-thumb">
+                            <img src="~/img/avatar42-sm.jpg" alt="author">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">Tapronus Rock</a>
+                            <span class="chat-message-item">Rock Band</span>
+                        </div>
+                        <span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="Adicionar às minhas páginas">
+                            <a href="#">
+                                <svg class="olymp-star-icon"><use xlink:href="~/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+                            </a>
+                        </span>
+
+                    </li>
+
+                    <li class="inline-items">
+                        <div class="author-thumb">
+                            <img src="~/img/avatar43-sm.jpg" alt="author">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">Pixel Digital Design</a>
+                            <span class="chat-message-item">Company</span>
+                        </div>
+                        <span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="Adicionar às minhas páginas">
+                            <a href="#">
+                                <svg class="olymp-star-icon"><use xlink:href="~/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+                            </a>
+                        </span>
+                    </li>
+
+                    <li class="inline-items">
+                        <div class="author-thumb">
+                            <img src="~/img/avatar44-sm.jpg" alt="author">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">Thompson’s Custom Clothing Boutique</a>
+                            <span class="chat-message-item">Clothing Store</span>
+                        </div>
+                        <span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="Adicionar às minhas páginas">
+                            <a href="#">
+                                <svg class="olymp-star-icon"><use xlink:href="~/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+                            </a>
+                        </span>
+
+                    </li>
+
+                    <li class="inline-items">
+                        <div class="author-thumb">
+                            <img src="~/img/avatar45-sm.jpg" alt="author">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">Crimson Agency</a>
+                            <span class="chat-message-item">Company</span>
+                        </div>
+                        <span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="Adicionar às minhas páginas">
+                            <a href="#">
+                                <svg class="olymp-star-icon"><use xlink:href="~/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+                            </a>
+                        </span>
+                    </li>
+
+                    <li class="inline-items">
+                        <div class="author-thumb">
+                            <img src="~/img/avatar46-sm.jpg" alt="author">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">Mannequin Angel</a>
+                            <span class="chat-message-item">Clothing Store</span>
+                        </div>
+                        <span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="Adicionar às minhas páginas">
+                            <a href="#">
+                                <svg class="olymp-star-icon"><use xlink:href="~/svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+
+                <!-- .. end W-Friend-Pages-Added -->
+            </div>
+        </aside>
+
+        <!-- ... end Left Sidebar -->
+        <!-- Right Sidebar -->
+
+        <aside class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-12 col-12">
+
+            <div class="ui-block">
+
+                <!-- W-Birthsday-Alert -->
+
+                <div class="widget w-birthday-alert">
+                    <div class="icons-block">
+                        <svg class="olymp-cupcake-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-cupcake-icon"></use></svg>
+                        <a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                    </div>
+
+                    <div class="content">
+                        <div class="author-thumb">
+                            <img src="img/avatar48-sm.jpg" alt="author">
+                        </div>
+                        <a href="#" class="h4 title">Aba dos Aniversários!</a>
+                        <p>!</p>
+                    </div>
+                </div>
+
+                <!-- ... end W-Birthsday-Alert -->
+            </div>
+
+
+
+
+
+
+            <div class="ui-block">
+
+
+                <!-- W-Action -->
+
+                <div class="widget w-action">
+
+                    <img src="img/logo.png" alt="Olympus">
+                    <div class="content">
+                        <h4 class="title">UMA</h4>
+                        <span>Rede social da Universidade Metodista de Angola!</span>
+                    </div>
+                </div>
+
+                <!-- ... end W-Action -->
+            </div>
+
+        </aside>
+
+        <!-- ... end Right Sidebar -->
+
+    </div>
+</div>
