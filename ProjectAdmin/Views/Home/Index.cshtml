@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ProjectAdmin.Models.LoginViewModel
+
+@{
     ViewBag.Title = "Bem Vindo";
 }
 
@@ -23,12 +25,12 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#home" role="tab">
-                        <svg class="olymp-login-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-login-icon"></use></svg>
+                        <svg class="olymp-login-icon"><use xlink:href="~/svg-icons/sprites/icons.svg#olymp-login-icon"></use></svg>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
-                        <svg class="olymp-register-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-register-icon"></use></svg>
+                        <svg class="olymp-register-icon"><use xlink:href="~/svg-icons/sprites/icons.svg#olymp-register-icon"></use></svg>
                     </a>
                 </li>
             </ul>
@@ -44,13 +46,13 @@
                         <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label">Primeiro Nome</label>
-                                <input name="PrimeiroNome" id="PrimeiroNome" class="form-control" placeholder="" type="text">
+                                <input  data-val-required="O campo Primeiro Nome é necessário." name="PrimeiroNome" id="PrimeiroNome" class="form-control" placeholder="" type="text">
                             </div>
                         </div>
                         <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label">Ultimo nome</label>
-                                <input name="UltimoNome" id="UltimoNome"  class="form-control" placeholder="" type="text">
+                                <input data-val-required="O campo Ultimo Nome é necessário." name="UltimoNome" id="UltimoNome"  class="form-control" placeholder="" type="text">
                             </div>
                         </div>
                         <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -60,7 +62,7 @@
                             </div>
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label">Sua Senha</label>
-                                <input name="Password" id="Password" class="form-control" placeholder="" type="password">
+                                <input  data-val-required="O campo Senha é necessário." name="Password" id="Password" class="form-control" placeholder="" type="password">
                             </div>
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label">Confirme a Senha</label>
@@ -69,7 +71,7 @@
 
                             <div class="form-group date-time-picker label-floating">
                                 <label class="control-label">Data de Nascimento</label>
-                                <input name="dataNascimento" id="dataNascimento"  value="10/24/1984" />
+                                <input  data-val-required="O campo data de Nascimento é necessário." name="dataNascimento" id="dataNascimento"  value="10/24/1984" />
                                 <span class="input-group-addon">
                                     <svg class="olymp-calendar-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-calendar-icon"></use></svg>
                                 </span>
@@ -100,44 +102,48 @@
 
                 <div class="tab-pane" id="profile" role="tabpanel" data-mh="log-tab">
                     <div class="title h6">Entrar na sua Conta</div>
-                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "content", role = "form" }))
+                    @using (Html.BeginForm("Index", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "content", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
                        
-                            <div class="row">
-                                <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                    <div class="form-group label-floating is-empty">
-                                        <label class="control-label">Email</label>
-                                        <input name="Email" id="Email" class="form-control" placeholder="" type="email">
-                                    </div>
-                                    <div class="form-group label-floating is-empty">
-                                        <label class="control-label">Senha</label>
-                                        <input name="Password" id="Password"  class="form-control" placeholder="" type="password">
-                                    </div>
+                    <div class="row">
 
-                                    <div class="remember">
-
-                                        <div class="checkbox">
-                                            <label>
-                                                <input name="optionsCheckboxes" type="checkbox">
-                                                Relembrar Senha
-                                            </label>
-                                        </div>
-                                        <a href="#" class="forgot">Esqueci Minha Senha</a>
-                                    </div>
-
-                                    <button type="submit" href="#" class="btn btn-lg btn-primary full-width">Entrar</button>
-
-                                    <div class="or"></div>
-
-                                    <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Entrar com o Facebook</a>
-
-                                    <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Entrar com Twitter</a>
-
-
-                                    <p>  Você não tem uma conta? <a href="#">  Registrar agora! </a> é muito simples e você pode começar a aproveitar todos os benefícios!</p>
-                                </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label">Email</label>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label">Senha</label>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="remember">
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="optionsCheckboxes" type="checkbox">
+                                        Relembrar Senha
+                                    </label>
+                                </div>
+                                <a href="#" class="forgot">Esqueci Minha Senha</a>
+                            </div>
+
+                            <button type="submit" href="#" class="btn btn-lg btn-primary full-width">Entrar</button>
+
+                            <div class="or"></div>
+
+                            <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Entrar com o Facebook</a>
+
+                            <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Entrar com Twitter</a>
+
+
+                            <p>  Você não tem uma conta? <a href="#">  Registrar agora! </a> é muito simples e você pode começar a aproveitar todos os benefícios!</p>
+                        </div>
+                    </div>
                      
                     }
                 </div>

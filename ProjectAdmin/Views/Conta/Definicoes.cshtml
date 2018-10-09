@@ -5,6 +5,7 @@
     ViewBag.Title = "Definicoes";
 
     var imgUrl = Url.Content("~/Imagens/" + User.Identity.GetUserName() + ".png");
+    var imgUrlCapa = Url.Content("~/Imagens/" + User.Identity.GetUserId() + ".png");
 }
 
 
@@ -20,60 +21,87 @@
 
                     <!-- Personal Information Form  -->
 
-                        <div class="row">
-
-                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Primeiro Nome</label>
-                                    <input class="form-control" placeholder="" type="text" value="">
+                    <div class="row">
+                        <div class="col col-lg-12 col-md-6 col-sm-12 col-12">
+                            <div class="form-group date-time-picker label-floating">
+                                <div class="col-md-12">
+                                    <h6>Foto de Capa</h6>
                                 </div>
+                                <div class="col-md-12">
 
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Email</label>
-                                    <input class="form-control" placeholder="" type="email" value="jspiegel@yourmail.com">
-                                </div>
-
-                                <div class="form-group date-time-picker label-floating">
-                                    <label class="control-label">Aniversário</label>
-                                    <input name="datetimepicker" value="10/24/1984" />
-                                    <span class="input-group-addon">
-                                        <svg class="olymp-month-calendar-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-month-calendar-icon"></use></svg>
-                                    </span>
+                                    <img src="@imgUrlCapa" />
+                                    @using (Html.BeginForm("UploadPhotoCapa", "Conta", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <input type="hidden" name="nome" id="nome" value="@User.Identity.GetUserName()" />
+                                        <input type="hidden" name="id" id="id" value="@User.Identity.GetUserId()" />
+                                        <div class="btn btn-default browseimg">
+                                            <input type="file" name="file" id="files" onchange="this.form.submit()" />
+                                        </div>
+                                    }
                                 </div>
                             </div>
-
-                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                <img src="@imgUrl" height="250" width="250" />
-                                @using (Html.BeginForm("UploadPhoto", "Conta", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                    <input type="hidden" name="nome" id="nome" value="@User.Identity.GetUserName()"/>
-                                    <input type="hidden" name="id" id="id" value="@User.Identity.GetUserId()"/>
-                                    <div class="btn btn-default browseimg">
-                                        <input type="file" name="file" id="files" onchange="this.form.submit()" />
-                                    </div>
-                                }
-                            </div>
-
-                            <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                                <div class="form-group label-floating is-select">
-                                    <label class="control-label">Pais</label>
-                                    <select class="selectpicker form-control">
-                                        <option value="US">Angola</option>
-                                        <option value="AU">Australia</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                                <div class="form-group label-floating is-select">
-                                    <label class="control-label">Your State / Province</label>
-                                    <select class="selectpicker form-control">
-                                        <option value="CA">Luanda</option>
-                                        <option value="TE">Outra</option>
-                                    </select>
-                                </div>
-                            </div>
-
                         </div>
+                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Primeiro Nome</label>
+                                <input class="form-control" placeholder="" type="text" value="">
+                            </div>
+
+                            <div class="form-group label-floating">
+                                <label class="control-label">Email</label>
+                                <input class="form-control" placeholder="" type="email" value="jspiegel@yourmail.com">
+                            </div>
+
+                            <div class="form-group date-time-picker label-floating">
+                                <label class="control-label">Aniversário</label>
+                                <input name="datetimepicker" value="10/24/1984" />
+                                <span class="input-group-addon">
+                                    <svg class="olymp-month-calendar-icon icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-month-calendar-icon"></use></svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="form-group date-time-picker label-floating">
+                                <div class="col-md-12">
+                                    <h6>Foto de Perfil</h6>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <img src="@imgUrl" height="250" width="250" />
+                                    @using (Html.BeginForm("UploadPhoto", "Conta", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <input type="hidden" name="nome" id="nome" value="@User.Identity.GetUserName()" />
+                                        <input type="hidden" name="id" id="id" value="@User.Identity.GetUserId()" />
+                                        <div class="btn btn-default browseimg">
+                                            <input type="file" name="file" id="files" onchange="this.form.submit()" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                            <div class="form-group label-floating is-select">
+                                <label class="control-label">Pais</label>
+                                <select class="selectpicker form-control">
+                                    <option value="US">Angola</option>
+                                    <option value="AU">Australia</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                            <div class="form-group label-floating is-select">
+                                <label class="control-label">Provincia</label>
+                                <select class="selectpicker form-control">
+                                    <option value="CA">Luanda</option>
+                                    <option value="TE">Outra</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <!-- ... end Personal Information Form  -->
                 </div>

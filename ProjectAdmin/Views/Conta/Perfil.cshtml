@@ -8,6 +8,7 @@
     var user = db.Users.Find(User.Identity.GetUserId());
     var nome = user.PrimeiroNome + " " + user.UltimoNome;
     var imgUrl = Url.Content("~/Imagens/" + User.Identity.GetUserName() + ".png");
+    var imgUrlCapa = Url.Content("~/Imagens/" + User.Identity.GetUserId() + ".png");
 }
 
 <!-- Top Header-Profile -->
@@ -18,7 +19,7 @@
             <div class="ui-block">
                 <div class="top-header">
                     <div class="top-header-thumb">
-                        <img src="~/img/cropped-Come-Sip-With-me.jpg" alt="nature">
+                        <img src="@imgUrlCapa" alt="nature">
                     </div>
                     <div class="profile-section">
                         <div class="row">
@@ -851,7 +852,7 @@
                     <ul class="widget w-personal-info item-block">
                         <li>
                             <span class="title">Sobre Mim:</span>
-                            <span class="text">Oi, eu sou Jamite, tenho 23 anos e trabalho como designer digital para a agência “Sou bem mau” em Luanda yha ta numa.</span>
+                            <span class="text">Oi, eu sou @nome, tenho 23 anos e trabalho como designer digital para a agência “Sou bem mau” em Luanda yha ta numa.</span>
                         </li>
                         <li>
                             <span class="title">Outras Coisas Favoritas:</span>
